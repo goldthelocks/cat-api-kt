@@ -1,0 +1,33 @@
+version: '2.2'
+
+services:
+  cat-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: cat-api
+    ports:
+      - "9999:9999"
+    depends_on:
+      db:
+        condition: service_healthy
+    links:
+      - db
+    environment:
+      - NEW_RELIC_APP_NAME=cat-api
+#      - NEW_RELIC_LICENSE_KEY=<SET_YOUR_KEY_HERE>
+
+  db:
+    image: postgres
+    container_name: db
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_USER=cat
+      - POSTGRES_DB=cat
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5

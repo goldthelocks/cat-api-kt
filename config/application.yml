@@ -1,0 +1,16 @@
+catapi:
+  url: https://api.thecatapi.com/v1
+#  api-key: <your_api_key>
+
+server:
+  port: 9999
+
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://db:5432/cat
+    username: cat
+    password: password
