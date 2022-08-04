@@ -3,6 +3,7 @@ agents:
 
 steps:
   - name: ":construction: Build the app"
+    key: "build"
     artifact_paths:
       - "target/*"
     plugins:
@@ -11,4 +12,6 @@ steps:
           run: build
 
   - name: ":shipit: Publish docker image"
+    key: "publish"
+    depends_on: "build"
     command: "scripts/publish.sh"
