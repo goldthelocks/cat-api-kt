@@ -1,0 +1,11 @@
+version: '2.1'
+
+services:
+  build:
+    image: maven:3.8.6-openjdk-8-slim
+    volumes:
+      - .:/build
+      - ./target:/build/target
+      - $HOME/.m2:/root/.m2
+    working_dir: /build
+    command: /build/scripts/build.sh

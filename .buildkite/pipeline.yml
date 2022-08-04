@@ -1,0 +1,14 @@
+agents:
+  queue: "${BUILDKITE_AGENT_META_DATA_QUEUE:-default}"
+
+steps:
+  - name: ":construction: Build the app"
+    artifact_paths:
+      - "target/*"
+    plugins:
+      - docker-compose#v3.10.0:
+          config: docker-compose.build.yml
+          run: build
+
+  - name: ":shipit: Publish docker image"
+    command: "scripts/publish.sh"
