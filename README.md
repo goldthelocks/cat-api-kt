@@ -1,5 +1,7 @@
 # Cat API
 
+[![Build status](https://badge.buildkite.com/1cb5c67da18c20ff18a46600f3f37f9339c19b6d9659e3299c.svg?branch=master?theme=slack)](https://buildkite.com/goldthelocks/cat-api-kt)
+
 A sample Spring Boot app using WebClient to communicate with https://thecatapi.com.
 
 ## Getting Started
